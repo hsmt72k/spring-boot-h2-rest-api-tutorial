@@ -49,7 +49,7 @@ public class VegitableController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Vegitable> createVegitable(@RequestBody Vegitable vegitable) {
+    public ResponseEntity<Vegitable> create(@RequestBody Vegitable vegitable) {
         try {
             Vegitable resultVegitable = this.vegitableService.create(vegitable);
             return new ResponseEntity<>(resultVegitable, HttpStatus.CREATED);
@@ -59,7 +59,7 @@ public class VegitableController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Vegitable> updateVegitable(@PathVariable("id") long id, @RequestBody Vegitable vegitable) {
+    public ResponseEntity<Vegitable> update(@PathVariable("id") long id, @RequestBody Vegitable vegitable) {
         try {
             Vegitable resultVegitable = this.vegitableService.update(id, vegitable);
             return new ResponseEntity<>(resultVegitable, HttpStatus.OK);
@@ -70,7 +70,7 @@ public class VegitableController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteVegitable(@PathVariable("id") long id) {
+    public ResponseEntity<HttpStatus> delete(@PathVariable("id") long id) {
         try {
             this.vegitableService.deletedById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -80,7 +80,7 @@ public class VegitableController {
     }
 
     @DeleteMapping("/")
-    public ResponseEntity<HttpStatus> deleteAllVegitables() {
+    public ResponseEntity<HttpStatus> deleteAll() {
         try {
             this.vegitableService.deleteAllVegitables();
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

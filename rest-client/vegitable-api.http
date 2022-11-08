@@ -1,13 +1,13 @@
-### getAllVegitables()
+### getAll()
 GET http://localhost:8080/vegitable/list
 
-### getAllVegitables(name)
+### getAll(name)
 GET http://localhost:8080/vegitable/list?name=パプリカ
 
-### getVegitableById(id)
+### getById(id)
 GET http://localhost:8080/vegitable/1
 
-### createVegitable(vegitable)
+### create(vegitable)
 POST http://localhost:8080/vegitable/
 content-type: application/json
 
@@ -17,7 +17,7 @@ content-type: application/json
   "price": "100"
 }
 
-### updateVegitable(id, vegitable)
+### update(id, vegitable)
 PUT http://localhost:8080/vegitable/1
 content-type: application/json
 
@@ -27,10 +27,10 @@ content-type: application/json
   "price": "777"
 }
 
-### deleteVegitable(id)
+### delete(id)
 DELETE http://localhost:8080/vegitable/1
 
-### deleteAllVegitables()
+### deleteAll()
 DELETE http://localhost:8080/vegitable/
 
 ### findByColor(color)

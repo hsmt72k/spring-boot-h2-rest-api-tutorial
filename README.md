@@ -338,10 +338,10 @@ REST Client を使うと、http ファイルに記載した　URL をクリッ�
 
 `rest-client/vegi-h2-api.http`
 ``` md
-### getVegitableById(id)
+### getById(id)
 GET http://localhost:8080/vegitable/1
 
-### createVegitable(vegitable)
+### create(vegitable)
 POST http://localhost:8080/vegitable/
 content-type: application/json
 
@@ -525,7 +525,7 @@ public class VegitableController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Vegitable> createVegitable(@RequestBody Vegitable vegitable) {
+    public ResponseEntity<Vegitable> create(@RequestBody Vegitable vegitable) {
         try {
             Vegitable resultVegitable = this.vegitableService.create(vegitable);
             return new ResponseEntity<>(resultVegitable, HttpStatus.CREATED);
@@ -535,7 +535,7 @@ public class VegitableController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Vegitable> updateVegitable(@PathVariable("id") long id, @RequestBody Vegitable vegitable) {
+    public ResponseEntity<Vegitable> update(@PathVariable("id") long id, @RequestBody Vegitable vegitable) {
         try {
             Vegitable resultVegitable = this.vegitableService.update(id, vegitable);
             return new ResponseEntity<>(resultVegitable, HttpStatus.OK);
@@ -546,7 +546,7 @@ public class VegitableController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteVegitable(@PathVariable("id") long id) {
+    public ResponseEntity<HttpStatus> delete(@PathVariable("id") long id) {
         try {
             this.vegitableService.deletedById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -556,7 +556,7 @@ public class VegitableController {
     }
 
     @DeleteMapping("/")
-    public ResponseEntity<HttpStatus> deleteAllVegitables() {
+    public ResponseEntity<HttpStatus> deleteAll() {
         try {
             this.vegitableService.deleteAllVegitables();
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -587,16 +587,16 @@ REST Client で動作確認をする。
 
 `rest-client/vegitable-api.http`
 ``` md
-### getAllVegitables()
+### getAll()
 GET http://localhost:8080/vegitable/list
 
-### getAllVegitables(name)
+### getAll(name)
 GET http://localhost:8080/vegitable/list?name=パプリカ
 
-### getVegitableById(id)
+### getById(id)
 GET http://localhost:8080/vegitable/1
 
-### createVegitable(vegitable)
+### create(vegitable)
 POST http://localhost:8080/vegitable/
 content-type: application/json
 
@@ -606,7 +606,7 @@ content-type: application/json
   "price": "100"
 }
 
-### updateVegitable(id, vegitable)
+### update(id, vegitable)
 PUT http://localhost:8080/vegitable/1
 content-type: application/json
 
@@ -616,10 +616,10 @@ content-type: application/json
   "price": "777"
 }
 
-### deleteVegitable(id)
+### delete(id)
 DELETE http://localhost:8080/vegitable/1
 
-### deleteAllVegitables()
+### deleteAll()
 DELETE http://localhost:8080/vegitable/
 
 ### findByColor(color)
