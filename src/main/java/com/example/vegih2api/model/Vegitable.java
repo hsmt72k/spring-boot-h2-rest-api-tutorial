@@ -13,25 +13,25 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "vegitables")
+@Table(name = "VEGITABLES")
 public class Vegitable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@Column(name = "name", nullable = false, unique=true)
+	@Column(name = "NAME", nullable = false, unique=true)
 	private String name;
 
-    @Column(name = "color")
+    @Column(name = "COLOR")
 	private String color;
 
-	@Column(name = "price")
+	@Column(name = "PRICE")
 	private int price;
 
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "CREATED_AT", nullable = false)
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "UPDATED_AT", nullable = false)
     private LocalDateTime updatedAt;
 }

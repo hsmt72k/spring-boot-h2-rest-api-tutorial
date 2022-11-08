@@ -189,26 +189,26 @@ model パッケージで、Vegitable クラスを定義する。
 ``` java
 @Entity
 @Data
-@Table(name = "vegitables")
+@Table(name = "VEGITABLES")
 public class Vegitable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@Column(name = "name", nullable = false, unique=true)
+	@Column(name = "NAME", nullable = false, unique=true)
 	private String name;
 
-    @Column(name = "color")
+    @Column(name = "COLOR")
 	private String color;
 
-	@Column(name = "price")
+	@Column(name = "PRICE")
 	private int price;
 
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "CREATED_AT", nullable = false)
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "UPDATED_AT", nullable = false)
     private LocalDateTime updatedAt;
 }
 ```
@@ -224,7 +224,7 @@ public class Vegitable {
 
 **@GeneratedValue**  
 主キーの生成方法を定義する。
-`GenerationType.AUTO` は、このカラムをオートインクリメントにすることを意味する。
+`GenerationType.IDENTITY` は、データベースの IDENTITY 列を利用して，プライマリキー値を生成することを意味する。
 
 **@Column**  
 マッピングするデータベース内のカラムを定義する。
