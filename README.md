@@ -78,9 +78,9 @@ VSCode を開き、Ctrl + Shift + P キーを押す。
 ここでは、以下の2つのライブラリを選択した。
 
 - Spring Web（Web API を作るため）
-- Spring Data JPA（Java クラスとテーブルを紐づけるため）
-- Lombok（Getter, Setter のコーディングを省略するため）
 - Spring DevTools（ホットリロードを可能とするため）
+- Spring Data JPA（Java オブジェクトとテーブルを紐づけるため）
+- Lombok（Getter, Setter のコーディングを省略するため）
 - H2 Database（データベース）
 
 この5つを選んで、「Select 5 Dependencies」となった状態で Enter キーを押下。
@@ -165,10 +165,10 @@ Spring Boot は JPA の実装に Hibernate（ORマッパーのひとつ、DB の
 設定可能な値を以下の通り。
 
 - **none** :何もしない
-- **validate** :検証だけ行い、DB には変更を加えない。本番運用時にこの値を設定する。
-- **update** :アプリ起動時に、Entity に対応するテーブルがなければ作成する。
-- **create** :Entity に対応するテーブルがなければ作成、あればデータを削除する。
-- **create-drop** :Entity に対応するテーブルがなければ作成、アプリ終了時にスキーマを削除する。
+- **validate** : 検証だけ行い、DB には変更を加えない。本番運用時にこの値を設定する。
+- **update** : Entity に対応するテーブル、カラムがなければ作成する。
+- **create** : Entity に対応するテーブル、カラムがなければ作成、あればデータを削除する。
+- **create-drop** : アプリ起動時に、すべてのテーブルを削除してから、Entity に対応するテーブルを作成する。
 
 **spring.h2.console.enabled:** 
 true を指定すると、Spring が H2 Database 管理ツールを起動するようになり、
@@ -185,7 +185,7 @@ true を指定すると、Spring が H2 Database 管理ツールを起動する�
 
 model パッケージで、Vegitable クラスを定義する。
 
-`model/Vegitable.java`
+`src/main/java/com/example/vegiapi/model/Vegitable.java`
 ``` java
 @Entity
 @Data
@@ -235,8 +235,9 @@ public class Vegitable {
 
 Repository パッケージで、JpaRepository を継承した VegitableRepository インターフェイスを作成する。
 
-`repository/VegitableRepository.java`
+`src/main/java/com/example/vegiapi/repository/VegitableRepository.java`
 ``` java
+@Repository
 public interface VegitableRepository extends JpaRepository<Vegitable, Long> {
     List<Vegitable> findByColor(String color);
     List<Vegitable> findByNameContaining(String name);
@@ -263,7 +264,7 @@ Vegitable のサービスに、まずは以下の２つのメソッドを作っ�
 - 対象 ID の Vegitable を取得するメソッド
 - 受け取った Vegitable を登録するメソッド
 
-`service/VegitableService.java`
+`src/main/java/com/example/vegiapi/service/VegitableService.java`
 ``` java
 @Service
 public class VegitableService {
@@ -293,7 +294,7 @@ public class VegitableService {
 サービスにビジネスロジックを実装したら、
 次は、API の問い合わせ窓口となるコントローラを作成する。
 
-`controller/VegitableController.java`
+`src/main/java/com/example/vegiapi/controller/VegitableController.java`
 ``` java
 @RestController
 @RequestMapping("/vegitable")
@@ -417,7 +418,7 @@ SQL 文が実行され、テーブルのデータが表示される。
 今度は全件取得、更新、１件削除、全件削除、野菜名による取得、色指定による取得を行うためのメソッドを
 サービスに実装していく。
 
-`service/VegitableService.java`
+`src/main/java/com/example/vegiapi/service/VegitableService.java`
 ``` java
 @Service
 public class VegitableService {
@@ -492,7 +493,7 @@ public class VegitableService {
 
 サービスに実装したビジネスロジックを使用して、コントローラに API を追加していく。
 
-`controller/VegitableController.java`
+`src/main/java/com/example/vegiapicontroller/VegitableController.java`
 ``` java
 @RestController
 @RequestMapping("/vegitable")
