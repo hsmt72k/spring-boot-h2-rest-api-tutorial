@@ -311,7 +311,7 @@ public class VegitableController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Vegitable> createVegitable(@RequestBody Vegitable vegitable) {
+    public ResponseEntity<Vegitable> create(@RequestBody Vegitable vegitable) {
         try {
             Vegitable resultVegitable = this.vegitableService.create(vegitable);
             return new ResponseEntity<>(resultVegitable, HttpStatus.CREATED);
@@ -478,7 +478,7 @@ public class VegitableService {
         
     }
 
-    public void deleteAllVegitables() throws Exception {
+    public void deleteAll() throws Exception {
         this.vegitableRepository.deleteAll();
     }
 
@@ -558,7 +558,7 @@ public class VegitableController {
     @DeleteMapping("/")
     public ResponseEntity<HttpStatus> deleteAll() {
         try {
-            this.vegitableService.deleteAllVegitables();
+            this.vegitableService.deleteAll();
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -82,7 +82,7 @@ public class VegitableController {
     @DeleteMapping("/")
     public ResponseEntity<HttpStatus> deleteAll() {
         try {
-            this.vegitableService.deleteAllVegitables();
+            this.vegitableService.deleteAll();
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -70,7 +70,7 @@ public class VegitableService {
         
     }
 
-    public void deleteAllVegitables() throws Exception {
+    public void deleteAll() throws Exception {
         this.vegitableRepository.deleteAll();
     }
 
