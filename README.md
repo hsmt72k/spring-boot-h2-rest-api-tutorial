@@ -192,22 +192,22 @@ model パッケージで、Vegitable クラスを定義する。
 @Table(name = "VEGITABLES")
 public class Vegitable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-
-	@Column(name = "NAME", nullable = false, unique=true)
-	private String name;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    
+    @Column(name = "NAME", nullable = false, unique=true)
+    private String name;
+    
     @Column(name = "COLOR")
-	private String color;
-
-	@Column(name = "PRICE")
-	private int price;
-
+    private String color;
+    
+    @Column(name = "PRICE")
+    private int price;
+    
     @Column(name = "CREATED_AT", nullable = false)
     private LocalDateTime createdAt;
-
+    
     @Column(name = "UPDATED_AT", nullable = false)
     private LocalDateTime updatedAt;
 }
