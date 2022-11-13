@@ -51,8 +51,8 @@ public class VegitableController {
     @PostMapping("/")
     public ResponseEntity<Vegitable> create(@RequestBody Vegitable vegitable) {
         try {
-            Vegitable resultVegitable = this.vegitableService.create(vegitable);
-            return new ResponseEntity<>(resultVegitable, HttpStatus.CREATED);
+            Vegitable createdVegitable = this.vegitableService.create(vegitable);
+            return new ResponseEntity<>(createdVegitable, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

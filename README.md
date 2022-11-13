@@ -107,9 +107,9 @@ Spring Boot プロジェクトの作成に成功すると `Successfully generate
 @SpringBootApplication
 public class VegiH2ApiApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(VegiH2ApiApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(VegiH2ApiApplication.class, args);
+    }
 }
 ```
 
@@ -300,7 +300,7 @@ public class VegitableService {
 @RequestMapping("/vegitable")
 public class VegitableController {
 
-	@Autowired
+    @Autowired
     VegitableService vegitableService;
 
     @GetMapping("/{id}")
@@ -314,8 +314,8 @@ public class VegitableController {
     @PostMapping("/")
     public ResponseEntity<Vegitable> create(@RequestBody Vegitable vegitable) {
         try {
-            Vegitable resultVegitable = this.vegitableService.create(vegitable);
-            return new ResponseEntity<>(resultVegitable, HttpStatus.CREATED);
+            Vegitable createdVegitable = this.vegitableService.create(vegitable);
+            return new ResponseEntity<>(createdVegitable, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -528,8 +528,8 @@ public class VegitableController {
     @PostMapping("/")
     public ResponseEntity<Vegitable> create(@RequestBody Vegitable vegitable) {
         try {
-            Vegitable resultVegitable = this.vegitableService.create(vegitable);
-            return new ResponseEntity<>(resultVegitable, HttpStatus.CREATED);
+            Vegitable createdVegitable = this.vegitableService.create(vegitable);
+            return new ResponseEntity<>(createdVegitable, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
